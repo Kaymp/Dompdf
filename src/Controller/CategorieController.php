@@ -76,14 +76,13 @@ class CategorieController extends AbstractController
     #[Route('/{id}', name: 'categorie_delete', methods: ['POST'])]
     public function delete(Request $request, Categorie $categorie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $categorie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($categorie);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('categorie_index', [], Response::HTTP_SEE_OTHER);
     }
-
 
 
 // Include Dompdf required namespaces
@@ -105,19 +104,25 @@ class CategorieController extends AbstractController
             'categorie' => $categorie,
         ]);
 
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (force download)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => false
-        ]);
+//        // Load HTML to Dompdf
+//        $dompdf->loadHtml($html);
+//
+//        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+//        $dompdf->setPaper('A4', 'portrait');
+//
+//        // Render the HTML as PDF
+//        $dompdf->render();
+//
+//        // Output the generated PDF to Browser (force download)
+//        $dompdf->stream("mypdf.pdf", [
+//            "Attachment" => false
+//        ]);
+        $output = $dompdf->output();
+        $response = new Response($output);
+        $response->headers->set('Content-type' , 'application/pdf');
+        return $response;
     }
+
+
 
 }
