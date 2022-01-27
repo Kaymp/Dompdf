@@ -1,0 +1,31 @@
+{# ./templates/categorie/mypdf.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Categorie PDF</title>
+</head>
+<body>
+<h4>{{ title }}</h4>
+<h1>Category</h1>
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>{{ categorie.id }}</td>
+        <td><b>{{ categorie.naam }}</b></td>
+    </tr>
+    </tbody>
+</table>
+
+{% set productId = categorie.productId %}
+<table class="table">
+    {% include('product/_inc_tbody_pdfproduct.html.twig') %}
+</table>
+
+</body>
+</html>
