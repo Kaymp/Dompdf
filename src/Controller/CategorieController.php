@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
-use App\Entity\Category;
+//use App\Entity\Category;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;

@@ -8,12 +8,20 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Bon ID</th>
                 <td>{{ order.id }}</td>
             </tr>
             <tr>
                 <th>Amount</th>
                 <td>{{ order.amount }}</td>
+            </tr>
+            <tr>
+                <th>Klant</th>
+                <td>{{ order.user }}</td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>{{ order.product }}</td>
             </tr>
         </tbody>
     </table>

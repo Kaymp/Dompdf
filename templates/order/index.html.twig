@@ -21,7 +21,7 @@
                 <td>
                     <a href="{{ path('order_show', {'id': order.id}) }}">show</a>
                     <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
-                    <a href="{{ path('pdf_show', {'id': order.id}) }}">pdf</a>
+                    <a href="{{ path('pdf_show', {'id': order.user.id}) }}">pdf</a>
                 </td>
             </tr>
         {% else %}

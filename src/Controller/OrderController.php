@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Entity\Product;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
@@ -58,7 +59,7 @@ class OrderController extends AbstractController
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('order/mypdf.html.twig', [
             'title' => "Order PDF",
-            'bestels' => $orderRepository->findBy(['product' => $id]),
+            'bestels' => $orderRepository->findBy(['user' => $id]),
             'products' => $productRepository->findAll(),
         ]);
 
