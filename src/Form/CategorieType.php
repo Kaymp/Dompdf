@@ -6,6 +6,8 @@ use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use function Sodium\add;
 
 class CategorieType extends AbstractType
 {
@@ -13,6 +15,15 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('naam')
+            ->add('productId', CollectionType::class, [
+                'entry_type' => ProductType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'attr' => array(
+                    'class' => 'my-selector',
+                ),
+            ])
         ;
     }
 

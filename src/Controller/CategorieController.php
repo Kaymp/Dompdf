@@ -14,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 // use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+//// include autoloader
+//require_once 'dompdf/autoload.inc.php';
 
 
 #[Route('/categorie')]
@@ -104,14 +106,14 @@ class CategorieController extends AbstractController
             'categorie' => $categorie,
         ]);
 
-//        // Load HTML to Dompdf
-//        $dompdf->loadHtml($html);
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
 //
-//        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-//        $dompdf->setPaper('A4', 'portrait');
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
 //
-//        // Render the HTML as PDF
-//        $dompdf->render();
+        // Render the HTML as PDF
+        $dompdf->render();
 //
 //        // Output the generated PDF to Browser (force download)
 //        $dompdf->stream("mypdf.pdf", [
